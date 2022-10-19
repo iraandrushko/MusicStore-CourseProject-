@@ -13,6 +13,7 @@ namespace MusicStore.DAL.Models
 
         [Required]
         public virtual Artist Artist { get; set; }
+        public int ArtistId { get; set; }
 
         [Required]
         public decimal Price { get; set; }

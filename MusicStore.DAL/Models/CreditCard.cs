@@ -15,5 +15,7 @@ namespace MusicStore.DAL.Models
         public DateTime ExpirationDate { get; set; }
 
         public virtual User User { get; set; }
+
+        public int UserId { get; set; }
     }
 }

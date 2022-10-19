@@ -1,26 +1,32 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MusicStore.DAL.Models;
-using MusicStore.DTO;
-using System;
+using MusicStore.DAL.Repositories.Abstract;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MusicStore.DAL.Repositories
 {
-    public class OrderRepository : BaseRepository<Order, OrderDto>
+    public class OrderRepository : BaseRepository<Order>, IOrderRepository
     {
-        public IEnumerable<OrderDto> GetAllOrders()
+        public OrderRepository()
+        {
+        }
+
+        public OrderRepository(ApplicationDbContext dbContext) : base(dbContext)
+        {
+        }
+
+        public IEnumerable<Order> GetAllOrders()
         {
             var orders = Database.Orders.Include(o => o.Album).Include(o => o.User);
 
-            return Mapper.Map<IEnumerable<OrderDto>>(orders);
+            return orders;
         }
 
-        public OrderDto GetOrderByUser(int userId)
+        public IEnumerable<Order> GetOrdersByUser(int userId)
         {
-            var order = Database.Orders.Include(o => o.Album).Include(o => o.User).Where(u => u.Id == userId).FirstOrDefault();
-            return Mapper.Map<OrderDto>(order);
+            var order = Database.Orders.Include(o => o.Album).Include(o => o.User).Where(u => u.Id == userId);
+            return order;
         }
     }
 }

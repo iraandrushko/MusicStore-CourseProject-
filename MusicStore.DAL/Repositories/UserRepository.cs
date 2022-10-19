@@ -1,37 +1,31 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MusicStore.DAL.Models;
-using MusicStore.DTO;
-using System;
+using MusicStore.DAL.Repositories.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace MusicStore.DAL.Repositories
 {
-    public class UserRepository : BaseRepository<User, UserDto>
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public UserDto GetUserByEmail(string email)
+        public UserRepository()
+        {
+        }
+
+        public UserRepository(ApplicationDbContext dbContext) : base(dbContext)
+        {
+        }
+
+        public User GetUserByEmail(string email)
         {
             var user = Database.Users.Include(u => u.CreditCard).Where(u => u.Email == email).FirstOrDefault();
-            return Mapper.Map<UserDto>(user);
+            return user;
         }
 
-        public void DeleteUser(int id)
-        {
-            var user = Database.Users.Include(u => u.CreditCard).FirstOrDefault(u => u.Id == id);
-
-            if (user != null) 
-            {
-                Database.CreditCards.Remove(user.CreditCard);
-                Database.Users.Remove(user);
-                Database.SaveChanges();
-            }
-        }
-
-        public IEnumerable<UserDto> GetAllUsersWirhCards()
+        public IEnumerable<User> GetAllUsersWithCards()
         {
             var users = Database.Users.Include(u => u.CreditCard);
-            
-            return Mapper.Map<IEnumerable<UserDto>>(users);
+            return users;
         }
 
         //public dynamic GetTestUser() 

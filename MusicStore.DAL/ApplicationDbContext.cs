@@ -23,22 +23,25 @@ namespace MusicStore.DAL
 
         public ApplicationDbContext()
         {
-            Database.EnsureCreated();
+            var dbJustCreated = Database.EnsureCreated();
+            if (dbJustCreated) 
+            {
+                Seed();
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=MusicStore1;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=MusicStore;Integrated Security=True");
             base.OnConfiguring(optionsBuilder);
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<CreditCard>()
             //modelBuilder.Entity<User>()
             //    .HasOne(u => u.CreditCard)
-            //    .WithOne(c => c.User)
-            //    .HasForeignKey<CreditCard>(c => c.UserId)
+            //    .WithOne(c => c.User) 
             //    .OnDelete(DeleteBehavior.Cascade);
         }
     }

@@ -3,8 +3,9 @@ using MusicStore.DAL.Enums;
 using MusicStore.DAL.Models;
 using MusicStore.DTO;
 using MusicStore.DTO.Enum;
+using System;
 
-namespace MusicStore.DAL.Mappers
+namespace MusicStore.ConsoleApp.Mappers
 {
     public class AutoMapperConfiguration
     {
@@ -18,49 +19,43 @@ namespace MusicStore.DAL.Mappers
                 {
                     // User
                     cfg.CreateMap<User, User>()
-                        .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+                       .ConfigureUpdateEntity();
 
                     cfg.CreateMap<User, UserDto>().ReverseMap();
 
                     // Track
                     cfg.CreateMap<Track, Track>()
-                        .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+                       .ConfigureUpdateEntity();
 
                     cfg.CreateMap<Track, TrackDto>().ReverseMap();
 
-                    //Gender
-                    cfg.CreateMap<Gender, Gender>()
-                      .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
-
-                    cfg.CreateMap<Gender, GenderDto>().ReverseMap();
-
                     //CreditCard
                     cfg.CreateMap<CreditCard, CreditCard>()
-                      .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+                       .ConfigureUpdateEntity();
 
                     cfg.CreateMap<CreditCard, CreditCardDto>().ReverseMap();
 
                     //Album
                     cfg.CreateMap<Album, Album>()
-                   .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+                       .ConfigureUpdateEntity();
 
                     cfg.CreateMap<Album, AlbumDto>().ReverseMap();
 
                     //Genre
                     cfg.CreateMap<Genre, Genre>()
-                   .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+                       .ConfigureUpdateEntity();
 
                     cfg.CreateMap<Genre, GenreDto>().ReverseMap();
 
                     //Artist
                     cfg.CreateMap<Artist, Artist>()
-                   .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+                       .ConfigureUpdateEntity();
 
                     cfg.CreateMap<Artist, ArtistDto>().ReverseMap();
 
                     //Order
                     cfg.CreateMap<Order, Order>()
-                   .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+                       .ConfigureUpdateEntity();
 
                     cfg.CreateMap<Order, OrderDto>().ReverseMap();
 

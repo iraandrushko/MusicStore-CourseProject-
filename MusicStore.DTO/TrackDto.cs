@@ -9,6 +9,8 @@ namespace MusicStore.DTO
         public string Name { get; set; }
         public AlbumDto Album { get; set; }
         public GenreDto Genre { get; set; }
+        public int GenreId { get; set; }
+        public int AlbumId { get; set; }
         public float Duration { get; set; }
 
     }

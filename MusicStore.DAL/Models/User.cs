@@ -35,7 +35,5 @@ namespace MusicStore.DAL.Models
 
         [Required]
         public virtual CreditCard CreditCard { get; set; }
-        public int CreditCardId { get; set; }
-
     }
 }

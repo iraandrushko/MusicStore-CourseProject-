@@ -1,56 +1,60 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using MusicStore.DAL.Mappers;
+﻿using Microsoft.EntityFrameworkCore;
 using MusicStore.DAL.Models;
+using MusicStore.DAL.Repositories.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
+using System.Linq.Expressions;
 
 namespace MusicStore.DAL.Repositories
 {
-    public abstract class BaseRepository<TEntity, TDto> where TEntity : BaseEntity
+    public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly DbSet<TEntity> dbSet;
-        protected readonly IMapper Mapper;
         protected readonly ApplicationDbContext Database;
 
-        public BaseRepository()
+        public BaseRepository() : this(new ApplicationDbContext())
         {
-            this.Database = new ApplicationDbContext();
-            this.Mapper = new Mapper(AutoMapperConfiguration.GetMapperConfiguration());
+        }
+
+        public BaseRepository(ApplicationDbContext dbContext)
+        {
+            this.Database = dbContext;
             this.dbSet = Database.Set<TEntity>();
         }
 
-        public TDto GetById(int id) 
+        public TEntity GetById(int id) 
         {
-            return Mapper.Map<TDto>(dbSet.Find(id));
+            return dbSet.Find(id);
         }
 
-        public IEnumerable<TDto> GetAll() 
+        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null) 
         {
-            return Mapper.Map<List<TDto>>(dbSet.ToList());
+            if (filter != null) 
+            {
+                return dbSet.Where(filter);
+            }
+
+            return GetAll();
         }
 
-        public void Create(TDto dto)
+        public IEnumerable<TEntity> GetAll() 
         {
-            var entity = Mapper.Map<TEntity>(dto);
+            return dbSet;
+        }
+
+        public void Create(TEntity entity)
+        {
             entity.CreatedDate = DateTime.Now;
             entity.UpdatedDate = DateTime.Now;
+
             dbSet.Add(entity);
             Database.SaveChanges();
         }
 
-        public void Update(int id, TDto dto)
+        public void Update(TEntity entity)
         {
-            var model = Mapper.Map<TEntity>(dto);
-            var entity = dbSet.Find(id);
-
-            Mapper.Map<TEntity, TEntity>(model, entity);
-
-            entity.Id = id;
             entity.UpdatedDate = DateTime.Now;
-
             dbSet.Update(entity);
             Database.SaveChanges();
         }

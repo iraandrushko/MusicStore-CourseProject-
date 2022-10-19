@@ -10,9 +10,11 @@ namespace MusicStore.DAL.Models
 
         [Required]
         public virtual Album Album { get; set; }
+        public int AlbumId { get; set; }
 
         [Required]
         public virtual Genre Genre { get; set; }
+        public int GenreId { get; set; }
 
         [Required]
         public float Duration { get; set; }

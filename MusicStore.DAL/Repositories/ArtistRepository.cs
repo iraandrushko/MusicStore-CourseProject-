@@ -1,26 +1,30 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MusicStore.DAL.Models;
-using MusicStore.DTO;
-using System;
+﻿using MusicStore.DAL.Models;
+using MusicStore.DAL.Repositories.Abstract;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MusicStore.DAL.Repositories
 {
-    public class ArtistRepository : BaseRepository<Artist, ArtistDto>
+    public class ArtistRepository : BaseRepository<Artist>, IArtistRepository
     {
-        public ArtistDto GetArtistByName(string artistName)
+        public ArtistRepository()
         {
-            var artist = Database.Artists.Where(t => t.Name == artistName).FirstOrDefault();
-            return Mapper.Map<ArtistDto>(artist);
         }
 
-        public IEnumerable<AlbumDto> GetAlbums(int artistId)
+        public ArtistRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
-            var artist = Database.Artists.Include(a => a.Albums).Where(a => a.Id == artistId).FirstOrDefault();
-            var artistAlbums = artist.Albums;
-            return Mapper.Map<IEnumerable<AlbumDto>>(artistAlbums);
+        }
+
+        public Artist GetArtistByName(string artistName)
+        {
+            var artist = Database.Artists.Where(t => t.Name == artistName).FirstOrDefault();
+            return artist;
+        }
+
+        public IEnumerable<Album> GetAlbums(int artistId)
+        {
+            var artistAlbums = Database.Albums.Where(a => a.Artist.Id == artistId);
+            return artistAlbums;
         }
     }
 }

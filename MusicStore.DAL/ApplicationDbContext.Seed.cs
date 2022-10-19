@@ -1,8 +1,6 @@
 ﻿using MusicStore.DAL.Enums;
 using MusicStore.DAL.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MusicStore.DAL
 {

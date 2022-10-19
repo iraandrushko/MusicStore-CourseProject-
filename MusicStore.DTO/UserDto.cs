@@ -14,6 +14,6 @@ namespace MusicStore.DTO
         public GenderDto Gender { get; set; }
         public string Adress { get; set; }
         public string PhoneNumber { get; set; }
-        public virtual CreditCardDto CreditCard { get; set; }
+        public CreditCardDto CreditCard { get; set; }
     }
 }
