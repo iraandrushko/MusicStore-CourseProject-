@@ -18,18 +18,21 @@ namespace MusicStore.DAL.Models
         [Required, StringLength(50)]
         public string Login { get; set; }
 
-        [Required, StringLength(50)]
+        [Required, StringLength(250)]
         public string Password { get; set; }
 
-        [Required, StringLength(50)]
-        public string PasswordSalt { get; set; }
+        [Required]
+        public Guid PasswordSalt { get; set; }
         
         [Required]
         public Gender Gender { get; set; }
 
         [Required, StringLength(50)]
         public string Adress { get; set; }
-        
+
+        [Required, StringLength(50)]
+        public string SecretWord { get; set; }
+
         [Required, StringLength(25)]
         public string PhoneNumber { get; set; }
 

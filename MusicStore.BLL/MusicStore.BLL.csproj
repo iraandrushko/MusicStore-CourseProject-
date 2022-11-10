@@ -1,7 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
@@ -14,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MusicStore.BLL\MusicStore.BLL.csproj" />
+    <ProjectReference Include="..\MusicStore.DAL\MusicStore.DAL.csproj" />
+    <ProjectReference Include="..\MusicStore.DTO\MusicStore.DTO.csproj" />
   </ItemGroup>
 
 </Project>

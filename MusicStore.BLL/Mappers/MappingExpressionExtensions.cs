@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MusicStore.DAL.Models;
 
-namespace MusicStore.ConsoleApp.Mappers
+namespace MusicStore.BLL.Mappers
 {
     public static class MappingExpressionExtensions
     {

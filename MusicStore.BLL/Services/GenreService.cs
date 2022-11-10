@@ -3,9 +3,9 @@ using MusicStore.DAL.Repositories;
 using MusicStore.DAL.Repositories.Abstract;
 using MusicStore.DTO;
 
-namespace MusicStore.ConsoleApp.Services
+namespace MusicStore.BLL.Services
 {
-    public class GenreService : BaseService<Genre, GenreDto>
+    public class GenreService : BaseService<Genre, GenreDto>, IGenreService
     {
         public GenreService() : this(new GenreRepository())
         {

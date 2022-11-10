@@ -1,4 +1,5 @@
-﻿using MusicStore.ConsoleApp.Services;
+﻿using MusicStore.BLL.Services;
+using MusicStore.Common;
 using MusicStore.DTO;
 using MusicStore.DTO.Enum;
 using System;
@@ -443,10 +444,12 @@ namespace MusicStore.ConsoleApp
             var passwordSalt = Console.ReadLine();
             Console.Write("Gender: ");
             var gender = Console.ReadLine();
-            Console.Write("Adress: ");
+            Console.Write("Address: ");
             var adress = Console.ReadLine();
             Console.Write("PhoneNumber: ");
             var phoneNum = Console.ReadLine();
+            Console.Write("SecretWord: ");
+            var secretWord = Console.ReadLine();
             Console.Write("CreditCardNumber: ");
             var cardNum = Console.ReadLine();
             Console.Write("BankName: ");
@@ -460,18 +463,19 @@ namespace MusicStore.ConsoleApp
                 BankName = bankName,
                 ExpirationDate = DateTime.Now.AddYears(years)
             };
-            
+            var guid = Guid.NewGuid();
             var user = new UserDto
             {
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
                 Login = login,
-                Password = password,
-                PasswordSalt = passwordSalt,
+                Password = Hashing.GetHashString(password, guid),
+                PasswordSalt = guid,
                 Gender = (gender == "male") ? GenderDto.Male : GenderDto.Female,
                 Adress = adress,
                 PhoneNumber = phoneNum,
+                SecretWord = secretWord,
                 CreditCard = card
             };
             userService.Create(user);

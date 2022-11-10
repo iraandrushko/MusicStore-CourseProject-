@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MusicStore.Common;
 using MusicStore.DAL.Enums;
 using MusicStore.DAL.Models;
 using MusicStore.DAL.Repositories;
@@ -42,6 +43,7 @@ namespace MusicStore.DAL.Test.UserTests
         public void Create_ValidEntity_ShouldCreateUser()
         {
             // Arrange
+            var guid = Guid.NewGuid();
             var user = new User
             {
                 FirstName = "Jason",
@@ -50,10 +52,11 @@ namespace MusicStore.DAL.Test.UserTests
                 UpdatedDate = DateTime.Now,
                 Email = CREATE_USER_EMAIL,
                 Login = "jason228",
-                Password = "LalalaJasonInDaHouse11",
-                PasswordSalt = "gafshdas_duytdvsa",
+                Password = Hashing.GetHashString("LalalaJasonInDaHouse11", guid),
+                PasswordSalt = guid,
                 Adress = "366 Shevchenka Street",
                 Gender = Gender.Male,
+                SecretWord = "radian",
                 PhoneNumber = "380954989755",
                 CreditCard = new CreditCard
                 {
@@ -82,6 +85,7 @@ namespace MusicStore.DAL.Test.UserTests
         public void Create_InvalidEntityWithNoLogin_ShouldNotCreateUser()
         {
             // Arrange & Act & Assert
+            var guid = Guid.NewGuid();
             this.repository.Create(new User
             {
                 FirstName = "Jason",
@@ -89,8 +93,8 @@ namespace MusicStore.DAL.Test.UserTests
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
                 Email = CREATE_USER_EMAIL,
-                Password = "LalalaJasonInDaHouse11",
-                PasswordSalt = "gafshdas_duytdvsa",
+                Password = Hashing.GetHashString("LalalaJasonInDaHouse11", guid),
+                PasswordSalt = guid,
                 Adress = "366 Shevchenka Street",
                 Gender = Gender.Male,
                 PhoneNumber = "380954989755",

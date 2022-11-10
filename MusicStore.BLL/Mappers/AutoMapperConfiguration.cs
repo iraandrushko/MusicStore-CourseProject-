@@ -5,7 +5,7 @@ using MusicStore.DTO;
 using MusicStore.DTO.Enum;
 using System;
 
-namespace MusicStore.ConsoleApp.Mappers
+namespace MusicStore.BLL.Mappers
 {
     public class AutoMapperConfiguration
     {

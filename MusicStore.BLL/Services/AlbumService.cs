@@ -3,9 +3,9 @@ using MusicStore.DAL.Repositories;
 using MusicStore.DAL.Repositories.Abstract;
 using MusicStore.DTO;
 
-namespace MusicStore.ConsoleApp.Services
+namespace MusicStore.BLL.Services
 {
-    public class AlbumService : BaseService<Album, AlbumDto>
+    public class AlbumService : BaseService<Album, AlbumDto>, IAlbumService
     {
         public AlbumService() : this(new AlbumRepository())
         {

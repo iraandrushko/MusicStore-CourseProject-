@@ -4,9 +4,9 @@ using MusicStore.DAL.Repositories.Abstract;
 using MusicStore.DTO;
 using System.Collections.Generic;
 
-namespace MusicStore.ConsoleApp.Services
+namespace MusicStore.BLL.Services
 {
-    public class ArtistService : BaseService<Artist, ArtistDto>
+    public class ArtistService : BaseService<Artist, ArtistDto>, IArtistService
     {
         private readonly IArtistRepository artistRepository;
         public ArtistService() : this(new ArtistRepository())

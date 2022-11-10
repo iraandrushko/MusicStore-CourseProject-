@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using MusicStore.ConsoleApp.Mappers;
+using MusicStore.BLL.Mappers;
 using MusicStore.DAL.Repositories.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace MusicStore.ConsoleApp.Services
+namespace MusicStore.BLL.Services
 {
-    public abstract class BaseService<TEntity, TDto>
+    public abstract class BaseService<TEntity, TDto> : IBaseService<TEntity, TDto>
     {
         protected readonly IMapper Mapper;
         private readonly IRepository<TEntity> repository;
@@ -24,7 +24,7 @@ namespace MusicStore.ConsoleApp.Services
             return Mapper.Map<List<TDto>>(repository.Get(filter).ToList());
         }
 
-        public IEnumerable<TDto> GetAll() 
+        public IEnumerable<TDto> GetAll()
         {
             return Mapper.Map<List<TDto>>(repository.GetAll().ToList());
         }
