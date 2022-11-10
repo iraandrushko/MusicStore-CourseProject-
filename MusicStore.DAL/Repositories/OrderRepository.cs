@@ -25,7 +25,7 @@ namespace MusicStore.DAL.Repositories
 
         public IEnumerable<Order> GetOrdersByUser(int userId)
         {
-            var order = Database.Orders.Include(o => o.Album).Include(o => o.User).Where(u => u.Id == userId);
+            var order = Database.Orders.Include(o => o.Album).Include(o => o.User).Where(u => u.UserId == userId);
             return order;
         }
     }

@@ -7,5 +7,6 @@ namespace MusicStore.DAL.Repositories.Abstract
     {
         User GetUserByEmail(string email);
         IEnumerable<User> GetAllUsersWithCards();
+        User GetUserByLogin(string login);
     }
 }

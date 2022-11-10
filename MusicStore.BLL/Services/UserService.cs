@@ -1,13 +1,14 @@
-﻿using MusicStore.DAL.Models;
+﻿using MusicStore.Common;
+using MusicStore.DAL.Models;
 using MusicStore.DAL.Repositories;
 using MusicStore.DAL.Repositories.Abstract;
 using MusicStore.DTO;
 using System;
 using System.Collections.Generic;
 
-namespace MusicStore.ConsoleApp.Services
+namespace MusicStore.BLL.Services
 {
-    public class UserService : BaseService<User, UserDto>
+    public class UserService : BaseService<User, UserDto>, IUserService
     {
         private readonly IUserRepository userRepository;
 
@@ -20,13 +21,19 @@ namespace MusicStore.ConsoleApp.Services
             this.userRepository = userRepository;
         }
 
-        public UserDto GetUserByEmail(string email) 
+        public UserDto GetUserByEmail(string email)
         {
-            if (!email.Contains("@")) 
+            if (!email.Contains("@"))
             {
                 throw new ArgumentException("Invalid email passed");
             }
             var user = userRepository.GetUserByEmail(email);
+            return this.Mapper.Map<UserDto>(user);
+        }
+
+        public UserDto GetUserByLogin(string login)
+        {
+            var user = userRepository.GetUserByLogin(login);
             return this.Mapper.Map<UserDto>(user);
         }
 
@@ -35,5 +42,6 @@ namespace MusicStore.ConsoleApp.Services
             var users = userRepository.GetAllUsersWithCards();
             return this.Mapper.Map<IEnumerable<UserDto>>(users);
         }
+
     }
 }

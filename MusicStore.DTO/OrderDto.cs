@@ -10,5 +10,6 @@ namespace MusicStore.DTO
         public int UserId { get; set; }
         public AlbumDto Album { get; set; }
         public int AlbumId { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

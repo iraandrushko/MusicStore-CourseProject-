@@ -1,4 +1,5 @@
-﻿using MusicStore.DAL.Enums;
+﻿using MusicStore.Common;
+using MusicStore.DAL.Enums;
 using MusicStore.DAL.Models;
 using System;
 
@@ -507,6 +508,8 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
             });
 
+
+            var guid1 = Guid.NewGuid();
             User user1 = new User
             {
                 FirstName = "Terry",
@@ -515,10 +518,11 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "atuny0@sohu.com",
                 Login = "TerryMed",
-                Password = "9uQFF1Lh",
-                PasswordSalt = "gdeut7",
+                Password = Hashing.GetHashString("9uQFF1Lh", guid1),
+                PasswordSalt = guid1,
                 Adress = "2A Zhnyvna Street",
                 Gender = Gender.Male,
+                SecretWord = "binomial",
                 PhoneNumber = "380955322468",
                 CreditCard = new CreditCard
                 {
@@ -530,6 +534,7 @@ namespace MusicStore.DAL
 
                 }
             };
+            var guid2 = Guid.NewGuid();
             User user2 = new User
             {
                 FirstName = "Sheldon",
@@ -538,10 +543,11 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "hbingley1@plala.or.jp",
                 Login = "Sheldonchyk33",
-                Password = "CQutx25i8r",
-                PasswordSalt = "htdget57",
+                Password = Hashing.GetHashString("CQutx25i8r", guid2),
+                PasswordSalt = guid2,
                 Adress = "5 Zhytnia Street",
                 Gender = Gender.Male,
+                SecretWord = "coefficient",
                 PhoneNumber = "380975392460",
                 CreditCard = new CreditCard
                 {
@@ -552,6 +558,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+            var guid3 = Guid.NewGuid();
             User user3 = new User
             {
                 FirstName = "Alison",
@@ -560,10 +567,11 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "jtreleven5@nhs.uk",
                 Login = "AliReichert",
-                Password = "9aUTdmmmbH",
-                PasswordSalt = "vdsvc4",
+                Password = Hashing.GetHashString("9aUTdmmmbH", guid3),
+                PasswordSalt = guid3,
                 Adress = "11 Yabluneva Street",
                 Gender = Gender.Female,
+                SecretWord = "interpolation",
                 PhoneNumber = "380938163062",
                 CreditCard = new CreditCard
                 {
@@ -574,6 +582,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+            var guid4 = Guid.NewGuid();
             User user4 = new User
             {
                 FirstName = "Oleta",
@@ -582,9 +591,10 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "dpettegre6@columbia.edu",
                 Login = "Abboleta",
-                Password = "YVmhktgYVS",
-                PasswordSalt = "sw5if",
+                Password = Hashing.GetHashString("YVmhktgYVS", guid4),
+                PasswordSalt = guid4,
                 Adress = "33 Yasna Street",
+                SecretWord = "quotient",
                 Gender = Gender.Female,
                 PhoneNumber = "380954025107",
                 CreditCard = new CreditCard
@@ -596,6 +606,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+            var guid5 = Guid.NewGuid();
             User user5 = new User
             {
                 FirstName = "Ewell",
@@ -604,9 +615,10 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "ggude7@chron.com",
                 Login = "Eweller",
-                Password = "MWwlaeWcOoF6",
-                PasswordSalt = "hte5",
+                Password = Hashing.GetHashString("MWwlaeWcOoF6", guid5),
+                PasswordSalt = guid5,
                 Adress = "108 Naukova Street",
+                SecretWord = "denominator",
                 Gender = Gender.Male,
                 PhoneNumber = "380950173927",
                 CreditCard = new CreditCard
@@ -618,6 +630,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+            var guid6 = Guid.NewGuid();
             User user6 = new User
             {
                 FirstName = "Eleanora",
@@ -626,9 +639,10 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "umcgourty9@jalbum.net",
                 Login = "Eleo1995",
-                Password = "i0xzpX",
-                PasswordSalt = "fsf9nf",
+                Password = Hashing.GetHashString("i0xzpX", guid6),
+                PasswordSalt = guid6,
                 Adress = "3 Nasypna Street",
+                SecretWord = "dodecahedron",
                 Gender = Gender.Female,
                 PhoneNumber = "380920948175",
                 CreditCard = new CreditCard
@@ -640,6 +654,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+            var guid7 = Guid.NewGuid();
             User user7 = new User
             {
                 FirstName = "Marcel",
@@ -648,10 +663,11 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "acharlota@liveinternet.ru",
                 Login = "JoMarcel",
-                Password = "M9lbMdydMN",
-                PasswordSalt = "zwc7b",
+                Password = Hashing.GetHashString("M9lbMdydMN", guid7),
+                PasswordSalt = guid7,
                 Adress = "18 Himichna Street",
                 Gender = Gender.Male,
+                SecretWord = "exponential",
                 PhoneNumber = "380973912048",
                 CreditCard = new CreditCard
                 {
@@ -662,6 +678,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+            var guid8 = Guid.NewGuid();
             User user8 = new User
             {
                 FirstName = "Assunta",
@@ -670,10 +687,11 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "rhallawellb@dropbox.com",
                 Login = "AssuntaRath",
-                Password = "esTkitT1r",
-                PasswordSalt = "vebk8",
+                Password = Hashing.GetHashString("esTkitT1r", guid8),
+                PasswordSalt = guid8,
                 Adress = "35 Tisna Street",
                 Gender = Gender.Female,
+                SecretWord = "heptagon",
                 PhoneNumber = "380972063481",
                 CreditCard = new CreditCard
                 {
@@ -684,6 +702,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+            var guid9 = Guid.NewGuid();
             User user9 = new User
             {
                 FirstName = "Trace",
@@ -692,10 +711,11 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "lgribbinc@posterous.com",
                 Login = "Douglas777",
-                Password = "ftGj8LZTtv9g",
-                PasswordSalt = "fs477uo89",
+                Password = Hashing.GetHashString("ftGj8LZTtv9g", guid9),
+                PasswordSalt = guid9,
                 Adress = "14 Franka Street",
                 Gender = Gender.Male,
+                SecretWord = "parallelogram",
                 PhoneNumber = "380939567102",
                 CreditCard = new CreditCard
                 {
@@ -706,6 +726,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+            var guid10 = Guid.NewGuid();
             User user10 = new User
             {
                 FirstName = "Enoch",
@@ -714,10 +735,11 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "mturleyd@tumblr.com",
                 Login = "EnoLynch",
-                Password = "GyLnCB8gNIp",
-                PasswordSalt = "vtc46",
+                Password = Hashing.GetHashString("GyLnCB8gNIp", guid10),
+                PasswordSalt = guid10,
                 Adress = "10B Vitriana Street",
                 Gender = Gender.Male,
+                SecretWord = "pentagon",
                 PhoneNumber = "380982098706",
                 CreditCard = new CreditCard
                 {
@@ -728,6 +750,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+            var guid11 = Guid.NewGuid();
             User user11 = new User
             {
                 FirstName = "Jeanne",
@@ -736,10 +759,11 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "kminchelle@qq.com",
                 Login = "Eleo1995",
-                Password = "0lelplR",
-                PasswordSalt = "lgy6",
+                Password = Hashing.GetHashString("0lelplR", guid11),
+                PasswordSalt = guid11,
                 Adress = "11 Pidlisna Street",
                 Gender = Gender.Female,
+                SecretWord = "polynomial",
                 PhoneNumber = "380975027190",
                 CreditCard = new CreditCard
                 {
@@ -750,6 +774,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+            var guid12 = Guid.NewGuid();
             User user12 = new User
             {
                 FirstName = "Trycia",
@@ -758,10 +783,11 @@ namespace MusicStore.DAL
                 UpdatedDate = DateTime.Now,
                 Email = "dpierrof@vimeo.com",
                 Login = "FadelTry",
-                Password = "Vru55Y4tufI4",
-                PasswordSalt = "ydthxr6",
+                Password = Hashing.GetHashString("Vru55Y4tufI4", guid12),
+                PasswordSalt = guid12,
                 Adress = "6 Svitla Street",
                 Gender = Gender.Female,
+                SecretWord = "trapezium",
                 PhoneNumber = "380976120642",
                 CreditCard = new CreditCard
                 {
@@ -772,6 +798,7 @@ namespace MusicStore.DAL
                     UpdatedDate = DateTime.Now,
                 }
             };
+
             Users.Add(user1);
             Users.Add(user2);
             Users.Add(user3);

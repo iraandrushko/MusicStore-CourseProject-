@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MusicStore.ConsoleApp.Services
+namespace MusicStore.BLL.Services
 {
-    public class OrderService : BaseService<Order, OrderDto>
+    public class OrderService : BaseService<Order, OrderDto>, IOrderService
     {
         private readonly IOrderRepository repository;
 

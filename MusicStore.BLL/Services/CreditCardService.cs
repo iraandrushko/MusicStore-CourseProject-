@@ -3,9 +3,9 @@ using MusicStore.DAL.Repositories;
 using MusicStore.DAL.Repositories.Abstract;
 using MusicStore.DTO;
 
-namespace MusicStore.ConsoleApp.Services
+namespace MusicStore.BLL.Services
 {
-    public class CreditCardService : BaseService<CreditCard, CreditCardDto>
+    public class CreditCardService : BaseService<CreditCard, CreditCardDto>, ICreditCardService
     {
         public CreditCardService() : this(new CreditCardRepository())
         {
